@@ -3,9 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import { getStudentClassroom } from '../../Utils/requests';
-import './Student.less';
+import './StudentDashboard.less';
 
-function Student() {
+  
+
+function StudentDashboard() {
+
+
   const [learningStandard, setLessonModule] = useState({});
   const navigate = useNavigate();
 
@@ -17,6 +21,8 @@ function Student() {
   } else {
     alert("Use normal alert");
   }
+
+
 
   // Browser Notification System
   function showNotification() {
@@ -54,6 +60,9 @@ function Student() {
     fetchData();
   }, []);
 
+  // End browser notification system
+
+
   const handleSelection = (activity) => {
     activity.lesson_module_name = learningStandard.name;
     localStorage.setItem('my-activity', JSON.stringify(activity));
@@ -61,14 +70,12 @@ function Student() {
     navigate('/workspace');
   };
 
-  // End browser notification system
-
   return (
     <div className='container nav-padding'>
       <NavBar />
       <div id='activity-container'>
         <div id='header'>
-          <div>Select your Activity</div>
+          <div>Assignments</div>
         </div>
         <ul>
           {learningStandard.activities ? (
@@ -93,8 +100,24 @@ function Student() {
           )}
         </ul>
       </div>
+      
+      <aside id="sidebar">
+        <div id='header'>
+            <div>Notifications</div>
+        </div>
+      </aside>
+
+      <div id='timeline'>
+        <div id='timelineHeader'>
+              Hi
+        </div>
+      </div>
+
     </div>
+    
+
   );
 }
 
-export default Student;
+export default StudentDashboard;
+
