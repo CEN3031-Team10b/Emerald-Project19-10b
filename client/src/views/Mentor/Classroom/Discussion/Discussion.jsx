@@ -10,6 +10,7 @@ import {
   createPost,
   addDiscussionPost,
   createDiscussion,
+  DELETEPost,
 } from '../../../../Utils/requests';
 import { message, Tag } from 'antd';
 
@@ -29,6 +30,18 @@ const Discussion = ({ classroomId }) => {
       }
     };
     addData();
+  };
+
+  const deletePost = (id) => {
+    const removeData = async () => {
+      const res = await DELETEPost(id);
+      if (res.data) {
+        setPosts(posts.filter((item) => item.id !== id));
+      } else {
+        message.error(res.err);
+      }
+    };
+    removeData();
   };
 
   useEffect(() => {
@@ -72,7 +85,7 @@ const Discussion = ({ classroomId }) => {
       >
         <NewPost addPost={addPost} />
         {posts.map((post, index) => (
-          <Post key={post.id} postId={post.id} />
+          <Post key={post.id} postId={post.id} deletePost={deletePost} />
         ))}
       </div>
     </>

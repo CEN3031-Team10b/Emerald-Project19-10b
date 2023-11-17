@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 import { getPost, addReply, createPost } from '../../../../Utils/requests';
 import { message, Tag } from 'antd';
+import { getCurrUser } from '../../../../Utils/userState';
 
-const Post = ({ postId }) => {
+const Post = ({ postId, deletePost }) => {
   const [post, setPost] = useState({});
   const [replies, setReplies] = useState([]);
   const [reply, setReply] = useState(false);
@@ -66,26 +67,50 @@ const Post = ({ postId }) => {
         >
           {post.Text}
         </p>
-        <button
-          style={{
-            width: 'auto',
-            height: 'auto',
-            border: 'none',
-            color: '#414141',
-            background: '#F3D250',
-            transition: '0.25s',
-            cursor: 'pointer',
-            borderRadius: '30px',
-            padding: '10px',
-            margin: '20px',
-            display: 'inline - block',
-          }}
-          onClick={(event) => {
-            setReply(!reply);
-          }}
-        >
-          Reply
-        </button>
+        <div>
+          <button
+            style={{
+              width: 'auto',
+              height: 'auto',
+              border: 'none',
+              color: '#414141',
+              background: '#F3D250',
+              transition: '0.25s',
+              cursor: 'pointer',
+              borderRadius: '30px',
+              padding: '10px',
+              margin: '20px',
+              display: 'inline - block',
+            }}
+            onClick={(event) => {
+              setReply(!reply);
+            }}
+          >
+            Reply
+          </button>
+          {getCurrUser().role != 'Student' ? (
+            <button
+              style={{
+                width: 'auto',
+                height: 'auto',
+                border: 'none',
+                color: '#414141',
+                background: '#F3D250',
+                transition: '0.25s',
+                cursor: 'pointer',
+                borderRadius: '30px',
+                padding: '10px',
+                margin: '20px',
+                display: 'inline - block',
+              }}
+              onClick={(event) => {
+                deletePost(postId);
+              }}
+            >
+              Delete
+            </button>
+          ) : null}
+        </div>
       </div>
       <>
         {reply ? (

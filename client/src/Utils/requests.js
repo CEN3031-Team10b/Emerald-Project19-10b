@@ -740,3 +740,11 @@ export const createDiscussion = async (classroomId) =>
     auth: true,
     error: 'Unable to add discussion',
   });
+
+export const DELETEPost = async (id) =>
+  makeRequest({
+    method: DELETE,
+    path: `${server}/discussion-posts/${id}`,
+    auth: true,
+    error: 'Unable to delete post',
+  });
