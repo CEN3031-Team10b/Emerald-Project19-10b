@@ -6,6 +6,8 @@ import { getStudentClassroom } from '../../Utils/requests';
 import './StudentDashboard.less';
 import { CalendarComponent } from '@syncfusion/ej2-react-calendars';
 
+import Example from './syllabusModal';
+
 
 
 function StudentDashboard() {
@@ -62,6 +64,9 @@ function StudentDashboard() {
     fetchData();
   }, []);
 
+  const goToNotifications = () => {
+    navigate('/notificationcenter');
+  };
 
 
 
@@ -107,23 +112,29 @@ function StudentDashboard() {
         <div id='header'>
             <div>Notifications</div>
         </div>
-        <div id='notification-button'></div>
+        <button id='notification-button' onClick={() => goToNotifications()}>
+          View All
+        </button>
         <ul>
           <div id='notification-item-wrapper'>
             <li>Notification 1</li>
-            <li>hello</li>
+            <li>It's</li>
           </div>
           <div id='notification-item-wrapper'>
             <li>Notification 2</li>
-            <li>hello</li>
+            <li>a</li>
           </div>
           <div id='notification-item-wrapper'>
             <li>Notification 3</li>
-            <li>hello</li>
+            <li>me</li>
           </div>
           <div id='notification-item-wrapper'>
             <li>Notification 4</li>
-            <li>hello</li>
+            <li>Mario</li>
+          </div>
+          <div id='notification-item-wrapper'>
+            <li>Notification 5</li>
+            <li>luigi</li>
           </div>
         </ul>
       </aside>
@@ -135,10 +146,12 @@ function StudentDashboard() {
       </div>
 
       <div id='syllabus'>
+        <div id='header'>Extras</div>
         <div>
           <ul>
             <div id='syllabus-item-wrapper'>
               <li>Syllabus</li>
+              {/* <Example></Example> */}
             </div>
             <div id='syllabus-item-wrapper'>
               <li>Discussions</li>

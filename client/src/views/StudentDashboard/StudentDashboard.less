@@ -37,6 +37,7 @@
   top: 45vh;
   left: 21vw;
   margin: -40vh auto 0 auto;
+  min-height: 85vh;
   height: auto;
   width: 40vw;
   background-color: #f4f5f588;
@@ -117,6 +118,7 @@
 }
 
 #notification-item-wrapper {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -140,7 +142,7 @@
 }
 
 #notification-button {
-  background-color: rgb(255, 75, 30);
+  background-color: rgb(255, 113, 78);
   border-radius: 80px;
   width: 40%;
   min-height: 4vh;
@@ -148,10 +150,20 @@
   font-size: 2.25vh;
   font-weight: bold;
   position: absolute;
-  top: -20px;
-  left: 300px;
+  top: -2%;
+  right: -2%;
   line-height: 45px;
   text-align: center;
+  transition: 0.1s;
+  outline: 3px solid #ffffff;
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(255, 97, 57);;
+    width: 41%;
+    min-height: 4.5vh;
+    top: -2%;
+    right: -2.3%;
+  }
 }
 
 #ul {
