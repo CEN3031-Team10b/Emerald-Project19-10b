@@ -6,6 +6,8 @@
     "@fullcalendar/list": "^6.1.9",
     "@fullcalendar/react": "^6.1.9",
     "@fullcalendar/timegrid": "^6.1.9",
-    "@syncfusion/ej2-react-calendars": "^23.1.41"
+    "@syncfusion/ej2-react-calendars": "^23.1.41",
+    "react-flatpickr": "^3.10.13",
+    "react-widgets": "^5.8.4"
   }
 }

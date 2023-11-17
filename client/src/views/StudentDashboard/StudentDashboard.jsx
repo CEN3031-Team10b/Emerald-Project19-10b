@@ -1,5 +1,5 @@
 import { message } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import { getStudentClassroom } from '../../Utils/requests';
@@ -7,27 +7,28 @@ import './StudentDashboard.less';
 import { CalendarComponent } from '@syncfusion/ej2-react-calendars';
 
 
+
 function StudentDashboard() {
 
   const [learningStandard, setLessonModule] = useState({});
   const navigate = useNavigate();
 
+
+
+  // Browser Notification System
   let permission = Notification.permission;
   if(permission === "granted") {
     showNotification();
   } else if(permission === "default"){
     requestAndShowPermission();
   } else {
-    alert("Use normal alert");
+    alert("Browser Notification");
   }
 
-
-
-  // Browser Notification System
   function showNotification() {
-    var title = "JavaScript Jeep";
+    var title = "CASMM";
     var icon = "image-url"
-    var body = "Message to be displayed";
+    var body = "New notification from CASMM";
     var notification = new Notification(title, { body, icon });
     notification.onclick = () => { 
            notification.close();
@@ -42,6 +43,8 @@ function StudentDashboard() {
      }
   });
 }
+
+  // End browser notification system
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,7 +62,7 @@ function StudentDashboard() {
     fetchData();
   }, []);
 
-  // End browser notification system
+
 
 
   const handleSelection = (activity) => {
@@ -104,22 +107,43 @@ function StudentDashboard() {
         <div id='header'>
             <div>Notifications</div>
         </div>
+        <div id='notification-button'></div>
         <ul>
-          <div class="dropdown">
-            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
-            <div id="myDropdown" class="dropdown-content">
-              <a href="#">Link 1</a>
-              <a href="#">Link 2</a>
-              <a href="#">Link 3</a>
-            </div>
+          <div id='notification-item-wrapper'>
+            <li>Notification 1</li>
+            <li>hello</li>
+          </div>
+          <div id='notification-item-wrapper'>
+            <li>Notification 2</li>
+            <li>hello</li>
+          </div>
+          <div id='notification-item-wrapper'>
+            <li>Notification 3</li>
+            <li>hello</li>
+          </div>
+          <div id='notification-item-wrapper'>
+            <li>Notification 4</li>
+            <li>hello</li>
           </div>
         </ul>
       </aside>
 
       <div id='timeline'>
-        <div id='timelineHeader'>Hi</div>
         <div>
-          <CalendarComponent></CalendarComponent>
+          <CalendarComponent id="calendar" />;
+        </div>
+      </div>
+
+      <div id='syllabus'>
+        <div>
+          <ul>
+            <div id='syllabus-item-wrapper'>
+              <li>Syllabus</li>
+            </div>
+            <div id='syllabus-item-wrapper'>
+              <li>Discussions</li>
+            </div>
+          </ul>
         </div>
       </div>
 

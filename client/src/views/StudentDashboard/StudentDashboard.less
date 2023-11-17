@@ -1,5 +1,7 @@
 @import "../../assets/style";
-@import url("https://cdn.syncfusion.com/ej2/material.css");
+@import "../node_modules/@syncfusion/ej2-base/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-buttons/styles/material.css";
+@import "../node_modules/@syncfusion/ej2-react-calendars/styles/material.css";
 
 
 #activity-container {
@@ -31,11 +33,11 @@
 }
 
 #sidebar {
-  position: absolute;
-  top: 53vh;
-  left: 51vw;
+  position: relative;
+  top: 45vh;
+  left: 21vw;
   margin: -40vh auto 0 auto;
-  height: 85vh;
+  height: auto;
   width: 40vw;
   background-color: #f4f5f588;
   border-radius: 15px;
@@ -49,27 +51,26 @@
   left: 10vw;
   margin: -40vh auto 0 auto;
   height: 39vh;
-  width: 40vw;
+  width: 20vw;
   background-color: rgba(7, 135, 92, 0.533);
   border-radius: 15px;
   border: 4px solid;
   border-color: #colors[secondary];
 }
 
-#timelineHeader {
-  background-color: #colors[secondary];
-  border-radius: 80px;
-  width: 40%;
-  min-height: 4vh;
-  color: #colors[text-secondary];
-  font-size: 2.25vh;
-  font-weight: bold;
-  position: relative;
-  top: -175px;
-  left: -200px;
-  line-height: 45px;
-  text-align: center;
+#syllabus {
+  position: absolute;
+  top: 99vh;
+  left: 31vw;
+  margin: -40vh auto 0 auto;
+  height: 39vh;
+  width: 19vw;
+  background-color: rgb(255, 155, 125);
+  border-radius: 15px;
+  border: 4px solid;
+  border-color: #colors[secondary];
 }
+
 
 #list-item-wrapper {
   display: flex;
@@ -93,61 +94,77 @@
   }
 }
 
-ul {
+#syllabus-item-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #colors[quaternary];
+  border: none;
+  border-radius: 10px;
+  margin: 0 auto 1.2em auto;
+  width: 85%;
+  height: 80px;
+  font-size: 2.5vh;
+  font-weight: 500;
+  color: #colors[text-primary];
+  line-height: 30px;
+  transition: 0.5s;
+  &:hover {
+    cursor: pointer;
+    background-color: #colors[quinary];
+    width: 82%;
+  }
+}
+
+#notification-item-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.863);
+  border: none;
+  border-radius: 50px;
+  margin: 0 auto 1.2em auto;
+  width: 95%;
+  height: 200px;
+  font-size: 2.5vh;
+  font-weight: 500;
+  color: #colors[text-primary];
+  line-height: 30px;
+  transition: 0.5s;
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(30, 173, 255);
+    width: 97%;
+    height: 202px;
+  }
+}
+
+#notification-button {
+  background-color: rgb(255, 75, 30);
+  border-radius: 80px;
+  width: 40%;
+  min-height: 4vh;
+  color: #colors[text-secondary];
+  font-size: 2.25vh;
+  font-weight: bold;
+  position: absolute;
+  top: -20px;
+  left: 300px;
+  line-height: 45px;
+  text-align: center;
+}
+
+#ul {
   margin: 0;
   padding: 0;
 }
 
-li {
+#li {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-/* Dropdown Button */
-.dropbtn {
-  background-color: #3498DB;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-}
-
-/* Dropdown button on hover & focus */
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #2980B9;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: #ddd;}
-
-/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
 
 #launcher {
   position: fixed;
