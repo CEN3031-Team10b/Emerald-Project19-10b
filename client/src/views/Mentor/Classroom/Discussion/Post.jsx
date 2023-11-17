@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
-import { getPost, addReply, createPost } from '../../../../Utils/requests';
+import {
+  getPost,
+  addReply,
+  createPost,
+  DELETEPost,
+} from '../../../../Utils/requests';
 import { message, Tag } from 'antd';
 import { getCurrUser } from '../../../../Utils/userState';
 
@@ -105,6 +110,9 @@ const Post = ({ postId, deletePost }) => {
               }}
               onClick={(event) => {
                 deletePost(postId);
+                replies.forEach((post) => {
+                  DELETEPost(post.id);
+                });
               }}
             >
               Delete
