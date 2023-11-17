@@ -2,55 +2,163 @@
 # yarn lockfile v1
 
 
-"@fullcalendar/core@~6.1.9":
+"@fullcalendar/core@^6.1.9", "@fullcalendar/core@~6.1.9":
   version "6.1.9"
   resolved "https://registry.npmjs.org/@fullcalendar/core/-/core-6.1.9.tgz"
   integrity sha512-eeG+z9BWerdsU9Ac6j16rpYpPnE0wxtnEHiHrh/u/ADbGTR3hCOjCD9PxQOfhOTHbWOVs7JQunGcksSPu5WZBQ==
   dependencies:
     preact "~10.12.1"
 
-"@fullcalendar/daygrid@~6.1.9":
+"@fullcalendar/daygrid@^6.1.9", "@fullcalendar/daygrid@~6.1.9":
   version "6.1.9"
   resolved "https://registry.npmjs.org/@fullcalendar/daygrid/-/daygrid-6.1.9.tgz"
   integrity sha512-o/6joH/7lmVHXAkbaa/tUbzWYnGp/LgfdiFyYPkqQbjKEeivNZWF1WhHqFbhx0zbFONSHtrvkjY2bjr+Ef2quQ==
 
-"@fullcalendar/interaction@~6.1.9":
+"@fullcalendar/interaction@^6.1.9":
   version "6.1.9"
   resolved "https://registry.npmjs.org/@fullcalendar/interaction/-/interaction-6.1.9.tgz"
   integrity sha512-I3FGnv0kKZpIwujg3HllbKrciNjTqeTYy3oJG226oAn7lV6wnrrDYMmuGmA0jPJAGN46HKrQqKN7ItxQRDec4Q==
 
-"@fullcalendar/list@~6.1.9":
+"@fullcalendar/list@^6.1.9":
   version "6.1.9"
   resolved "https://registry.npmjs.org/@fullcalendar/list/-/list-6.1.9.tgz"
   integrity sha512-OCKdC1Gz26cJ5QsXdQyXVyzVu23ypT2xzyAR+Wc8jEytcJLWXw2a914m/MVax8n8EHuaIYY2exhsy/eaSU0XNA==
 
-"@fullcalendar/multimonth@~6.1.9":
+"@fullcalendar/react@^6.1.9":
   version "6.1.9"
-  resolved "https://registry.npmjs.org/@fullcalendar/multimonth/-/multimonth-6.1.9.tgz"
-  integrity sha512-YpH1NL6RzdM1wO2nFJ3pNMo9xhd6i2WuE+e7SnGi7q1lO+ZZ77h5Fja5JKcpuIQUFHpi+m6vTzihIV8DT44NnQ==
-  dependencies:
-    "@fullcalendar/daygrid" "~6.1.9"
+  resolved "https://registry.npmjs.org/@fullcalendar/react/-/react-6.1.9.tgz"
+  integrity sha512-ioxu0V++pYz2u/N1LL1V8DkMyiKGRun0gMAll2tQz3Kzi3r9pTwncGKRb1zO8h0e+TrInU08ywk/l5lBwp7eog==
 
-"@fullcalendar/timegrid@~6.1.9":
+"@fullcalendar/timegrid@^6.1.9":
   version "6.1.9"
   resolved "https://registry.npmjs.org/@fullcalendar/timegrid/-/timegrid-6.1.9.tgz"
   integrity sha512-le7UV05wVE1Trdr054kgJXTwa+A1pEI8nlCBnPWdcyrL+dTLoPvQ4AWEVCnV7So+4zRYaCqnqGXfCJsj0RQa0g==
   dependencies:
     "@fullcalendar/daygrid" "~6.1.9"
 
-fullcalendar@^6.1.9:
-  version "6.1.9"
-  resolved "https://registry.npmjs.org/fullcalendar/-/fullcalendar-6.1.9.tgz"
-  integrity sha512-b3y22EqOtV1cGjOlPE6krs1CwQA/8p5lsylllp35tqDLOK7kLIXDQotpXgsDBY4qAKTgdiSauqzdkdvyrbjAgQ==
+"@syncfusion/ej2-base@~23.1.41":
+  version "23.1.41"
+  resolved "https://registry.npmjs.org/@syncfusion/ej2-base/-/ej2-base-23.1.41.tgz"
+  integrity sha512-ROtvuLIVkKl4eL+ubQjQQLleRMY98nYlxlBaFw4axtiDLoBbzOYtiFXmdP/KE+uNrMquZAwl+aduPX0loG3EAw==
   dependencies:
-    "@fullcalendar/core" "~6.1.9"
-    "@fullcalendar/daygrid" "~6.1.9"
-    "@fullcalendar/interaction" "~6.1.9"
-    "@fullcalendar/list" "~6.1.9"
-    "@fullcalendar/multimonth" "~6.1.9"
-    "@fullcalendar/timegrid" "~6.1.9"
+    "@syncfusion/ej2-icons" "~23.1.36"
+
+"@syncfusion/ej2-buttons@~23.1.41", "@syncfusion/ej2-buttons@~23.1.43":
+  version "23.1.43"
+  resolved "https://registry.npmjs.org/@syncfusion/ej2-buttons/-/ej2-buttons-23.1.43.tgz"
+  integrity sha512-Jg1cC/2o6ds+xDwQSlAF7cEYP4O4C9wojKFllcVvZTwTKWVxZ2KfYeAFM1kV1GR/WuJd+TmvNhwkvmkWz8UgQw==
+  dependencies:
+    "@syncfusion/ej2-base" "~23.1.41"
+
+"@syncfusion/ej2-calendars@23.1.41":
+  version "23.1.41"
+  resolved "https://registry.npmjs.org/@syncfusion/ej2-calendars/-/ej2-calendars-23.1.41.tgz"
+  integrity sha512-f5FdDxdRGeXAHkuu9U2PrYmkjlBq+FtrgMrGXXlDgqB88IgqvhdDmIJCLXAzy9k2LHau4aIbqMo1rkjtFfkRHA==
+  dependencies:
+    "@syncfusion/ej2-base" "~23.1.41"
+    "@syncfusion/ej2-buttons" "~23.1.41"
+    "@syncfusion/ej2-inputs" "~23.1.40"
+    "@syncfusion/ej2-lists" "~23.1.36"
+    "@syncfusion/ej2-popups" "~23.1.38"
+
+"@syncfusion/ej2-data@~23.1.43":
+  version "23.1.44"
+  resolved "https://registry.npmjs.org/@syncfusion/ej2-data/-/ej2-data-23.1.44.tgz"
+  integrity sha512-ZtWVsKcmCLPxFTMkvddre8/hMJaX6A6moR9NAsX332JanefWYs0GdyhE8tTRtzSZV8QcItVq/u4B77W5kNxQDg==
+  dependencies:
+    "@syncfusion/ej2-base" "~23.1.41"
+
+"@syncfusion/ej2-icons@~23.1.36":
+  version "23.1.36"
+  resolved "https://registry.npmjs.org/@syncfusion/ej2-icons/-/ej2-icons-23.1.36.tgz"
+  integrity sha512-Q7S50bOzXL9X46doNIGSGr61RCY/1RW9iz1U7yyARr2XBQhWnijk+t/FVBk1piR0nioRXbKQcPZOLiEo6zf1xw==
+
+"@syncfusion/ej2-inputs@~23.1.40":
+  version "23.1.43"
+  resolved "https://registry.npmjs.org/@syncfusion/ej2-inputs/-/ej2-inputs-23.1.43.tgz"
+  integrity sha512-G4HhneF2HXe6Tcig5pDlTaEgR46vQJgshcEym6WEVm0G39xiUSR5NIvyvS54IldGRyWwoyWEucbpM1kWGJC+7g==
+  dependencies:
+    "@syncfusion/ej2-base" "~23.1.41"
+    "@syncfusion/ej2-buttons" "~23.1.43"
+    "@syncfusion/ej2-popups" "~23.1.43"
+    "@syncfusion/ej2-splitbuttons" "~23.1.43"
+
+"@syncfusion/ej2-lists@~23.1.36":
+  version "23.1.43"
+  resolved "https://registry.npmjs.org/@syncfusion/ej2-lists/-/ej2-lists-23.1.43.tgz"
+  integrity sha512-AoEpXn7F8AmXq74PmGCqQjURHnriyhimVreenDWrB1HlMUPcAw7Lkep4gYQdJXYyfWlT+GE+lr6lfS7hgAFT+A==
+  dependencies:
+    "@syncfusion/ej2-base" "~23.1.41"
+    "@syncfusion/ej2-buttons" "~23.1.43"
+    "@syncfusion/ej2-data" "~23.1.43"
+
+"@syncfusion/ej2-popups@~23.1.38", "@syncfusion/ej2-popups@~23.1.43":
+  version "23.1.44"
+  resolved "https://registry.npmjs.org/@syncfusion/ej2-popups/-/ej2-popups-23.1.44.tgz"
+  integrity sha512-iMALjAv02515xD5fdLAb2SPs5q1KbQ5Q1QPrE066Hqwo/ynoCIfzw9unTFK+TKvldonGOMCIWxVcjJ+USn/TGw==
+  dependencies:
+    "@syncfusion/ej2-base" "~23.1.41"
+    "@syncfusion/ej2-buttons" "~23.1.43"
+
+"@syncfusion/ej2-react-base@~23.1.36":
+  version "23.1.43"
+  resolved "https://registry.npmjs.org/@syncfusion/ej2-react-base/-/ej2-react-base-23.1.43.tgz"
+  integrity sha512-Kd/sn0mw/hPc897F9tV+FF88Di5EK3j68oUdcyN3LPtus/nqNNfR90FcIr555aR0otQaS78KEGZLhEuA3u6YAA==
+  dependencies:
+    "@syncfusion/ej2-base" "~23.1.41"
+
+"@syncfusion/ej2-react-calendars@^23.1.41":
+  version "23.1.41"
+  resolved "https://registry.npmjs.org/@syncfusion/ej2-react-calendars/-/ej2-react-calendars-23.1.41.tgz"
+  integrity sha512-e4SsJjeuAfDMSwJSwYnzTLZIapGhiAgWGH3BWy4If+aIVpfYFP7oLPs4v4wfNH9QjOlBKY8uTNUjbnuKwX25qA==
+  dependencies:
+    "@syncfusion/ej2-base" "~23.1.41"
+    "@syncfusion/ej2-calendars" "23.1.41"
+    "@syncfusion/ej2-react-base" "~23.1.36"
+
+"@syncfusion/ej2-splitbuttons@~23.1.43":
+  version "23.1.43"
+  resolved "https://registry.npmjs.org/@syncfusion/ej2-splitbuttons/-/ej2-splitbuttons-23.1.43.tgz"
+  integrity sha512-NbT5XMCU87QPRr4svcEn/zEwIFAmwZiAYYLz2WjiuKVOnFw6htAKT81FF7X4CLl4HN0o1S7w09N9r5HQxv3mgQ==
+  dependencies:
+    "@syncfusion/ej2-base" "~23.1.41"
+    "@syncfusion/ej2-popups" "~23.1.43"
+
+"js-tokens@^3.0.0 || ^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.npmjs.org/js-tokens/-/js-tokens-4.0.0.tgz"
+  integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
+
+loose-envify@^1.1.0:
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/loose-envify/-/loose-envify-1.4.0.tgz"
+  integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
+  dependencies:
+    js-tokens "^3.0.0 || ^4.0.0"
 
 preact@~10.12.1:
   version "10.12.1"
   resolved "https://registry.npmjs.org/preact/-/preact-10.12.1.tgz"
   integrity sha512-l8386ixSsBdbreOAkqtrwqHwdvR35ID8c3rKPa8lCWuO86dBi32QWHV4vfsZK1utLLFMvw+Z5Ad4XLkZzchscg==
+
+"react-dom@^16.7.0 || ^17 || ^18":
+  version "18.2.0"
+  resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
+  integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
+  dependencies:
+    loose-envify "^1.1.0"
+    scheduler "^0.23.0"
+
+"react@^16.7.0 || ^17 || ^18", react@^18.2.0:
+  version "18.2.0"
+  resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
+  integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
+  dependencies:
+    loose-envify "^1.1.0"
+
+scheduler@^0.23.0:
+  version "0.23.0"
+  resolved "https://registry.npmjs.org/scheduler/-/scheduler-0.23.0.tgz"
+  integrity sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==
+  dependencies:
+    loose-envify "^1.1.0"

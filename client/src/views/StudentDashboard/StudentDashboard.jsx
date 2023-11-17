@@ -4,11 +4,10 @@ import { useNavigate } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import { getStudentClassroom } from '../../Utils/requests';
 import './StudentDashboard.less';
+import { CalendarComponent } from '@syncfusion/ej2-react-calendars';
 
-  
 
 function StudentDashboard() {
-
 
   const [learningStandard, setLessonModule] = useState({});
   const navigate = useNavigate();
@@ -105,17 +104,26 @@ function StudentDashboard() {
         <div id='header'>
             <div>Notifications</div>
         </div>
+        <ul>
+          <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </div>
+          </div>
+        </ul>
       </aside>
 
       <div id='timeline'>
-        <div id='timelineHeader'>
-              Hi
+        <div id='timelineHeader'>Hi</div>
+        <div>
+          <CalendarComponent></CalendarComponent>
         </div>
       </div>
 
     </div>
-    
-
   );
 }
 
