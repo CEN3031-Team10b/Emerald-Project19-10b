@@ -35,6 +35,9 @@ const ActivityDetailModal = ({
 
   const [linkError, setLinkError] = useState(false)
   const [submitButton, setSubmitButton] = useState(0)
+  const [Due_Date, setDue_Date] = useState(new Date())
+  const [Close_Date, setClose_Date] = useState(new Date())
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -70,6 +73,10 @@ const ActivityDetailModal = ({
           return element.type
         })
       setComputationComponents(computation)
+      
+      //Figure out what to put here
+      setDue_Date(response.data.dueDate)
+      setClose_Date(response.data.closeDate)
     }
     showActivityDetailsModal()
   }, [selectActivity])
@@ -123,7 +130,9 @@ const ActivityDetailModal = ({
       link,
       scienceComponents,
       makingComponents,
-      computationComponents
+      computationComponents,
+      Due_Date,
+      Close_Date
     )
     if (res.err) {
       message.error(res.err)
@@ -238,16 +247,30 @@ const ActivityDetailModal = ({
           ></Input>
         </Form.Item>
         <Form.Item
+          id="form-label"
           label='Due Date'
-          name= 'dueDate'
-          getValueFromEvent={(onChange) => moment(onChange).format('MM-DD-YYYY')}
+          onChange={e => (
+            setDue_Date(e.target.value)
+          )}
+          value={Due_Date}
+          className= 'dueDate'
+          //getValueFromEvent={(onChange) => moment(onChange).format('MM-DD-YYYY')}
           getValueProps={(i) => ({value: moment(i)})}
           >
-            <DatePicker format='MM-DD-YYYY' style ={{width: '100%'}} />
+            <DatePicker 
+              format='MM-DD-YYYY' 
+              style ={{width: '100%'}} 
+              
+              />
         </Form.Item>
         <Form.Item
+          id="form-label"
+          onChange={e => (
+            setClose_Date(e.target.value)
+          )}
           label='Close Date'
-          name= 'closeDate'
+          value={Close_Date}
+          className='closeDate'
           getValueFromEvent={(onChange) => moment(onChange).format('MM-DD-YYYY')}
           getValueProps={(i) => ({value: moment(i)})}
           >
