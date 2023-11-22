@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.bubble.css';
+import 'react-quill/dist/quill.snow.css';
 
 import {
   getPost,
@@ -14,6 +17,35 @@ const Post = ({ postId, deletePost }) => {
   const [replies, setReplies] = useState([]);
   const [reply, setReply] = useState(false);
   const [replyText, setreplyText] = useState('');
+
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [
+        { list: 'ordered' },
+        { list: 'bullet' },
+        { indent: '-1' },
+        { indent: '+1' },
+      ],
+      ['link', 'image'],
+      ['clean'],
+    ],
+  };
+
+  const formats = [
+    'header',
+    'bold',
+    'italic',
+    'underline',
+    'strike',
+    'blockquote',
+    'list',
+    'bullet',
+    'indent',
+    'link',
+    'image',
+  ];
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,7 +81,7 @@ const Post = ({ postId, deletePost }) => {
   };
 
   const handleChange = (event) => {
-    setreplyText(event.target.value);
+    setreplyText(event);
   };
 
   return (
@@ -62,16 +94,7 @@ const Post = ({ postId, deletePost }) => {
       }}
     >
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-        <p
-          style={{
-            padding: '20px',
-            fontSize: '1.2em',
-            textAlign: 'left',
-            display: 'inline - block',
-          }}
-        >
-          {post.Text}
-        </p>
+        <ReactQuill value={post.Text} readOnly={true} theme={'bubble'} />
         <div>
           <button
             style={{
@@ -123,12 +146,10 @@ const Post = ({ postId, deletePost }) => {
       <>
         {reply ? (
           <form onSubmit={handleSubmit}>
-            <textarea
-              style={{
-                width: '40vw',
-              }}
-              placeholder='Post'
+            <ReactQuill
               value={replyText}
+              modules={modules}
+              formats={formats}
               onChange={handleChange}
             />
             <button
@@ -153,18 +174,12 @@ const Post = ({ postId, deletePost }) => {
         ) : null}
       </>
       {replies.map((post, index) => (
-        <p
+        <ReactQuill
           key={index}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            marginLeft: '40px',
-            fontSize: '1.2em',
-            textAlign: 'left',
-          }}
-        >
-          {post.Text}
-        </p>
+          value={post.Text}
+          readOnly={true}
+          theme={'bubble'}
+        />
       ))}
     </div>
   );
