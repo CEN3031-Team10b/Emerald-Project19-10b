@@ -4,10 +4,11 @@ import './NotificationCenter.less';
 
 const NotificationCenter = () => {
   const [notifications, setNotifications] = useState([
-    { id: 1, text: 'Assignment #3 is due tomorrow!', read: false, flagged: false, date: 'Nov 20, 2023' },
-    { id: 2, text: 'New lecture material is available.', read: false, flagged: false, date: 'Nov 19, 2023' },
-    { id: 3, text: 'Classroom will meet in room 202 today.', read: false, flagged: false, date: 'Nov 18, 2023' },
+    { id: 1, text: 'Assignment #3 is due tomorrow!', read: false, flagged: false, date: '2023-11-20' },
+    { id: 2, text: 'New lecture material is available.', read: false, flagged: false, date: '2023-11-19' },
+    { id: 3, text: 'Class will meet in room 202 today.', read: false, flagged: false, date: '2023-11-18' },
   ]);
+  const [filter, setFilter] = useState('all');
 
   const toggleReadStatus = (id) => {
     setNotifications(notifications.map(notification => {
@@ -27,12 +28,32 @@ const NotificationCenter = () => {
     }));
   };
 
+  const handleFilterChange = (e) => {
+    setFilter(e.target.value);
+  };
+
+  const filteredNotifications = notifications
+    .filter(notification => {
+      if (filter === 'all') return true;
+      if (filter === 'read') return notification.read;
+      if (filter === 'unread') return !notification.read;
+      if (filter === 'flagged') return notification.flagged;
+      return true;
+    })
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+
   return (
     <div className="container nav-padding">
       <NavBar />
       <div className="notification-box">
         <div className="notification-title">Notification Center</div>
-        {notifications.map((notification) => (
+        <select onChange={handleFilterChange} value={filter} className="notification-filter">
+          <option value="all">All Notifications</option>
+          <option value="read">Read</option>
+          <option value="unread">Unread</option>
+          <option value="flagged">Flagged</option>
+        </select>
+        {filteredNotifications.map((notification) => (
           <div key={notification.id} className={`notification-message ${notification.read ? '' : 'bold'}`}>
             <div className="notification-details">
               <div className="notification-content">
