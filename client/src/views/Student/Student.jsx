@@ -78,6 +78,7 @@ function Student() {
                   onClick={() => handleSelection(activity)}
                 >
                   <li>{`${learningStandard.name}: Activity ${activity.number}`}</li>
+                  <li> | Due Date: {activity.Due_Date}</li>
                 </div>
               ))
           ) : (

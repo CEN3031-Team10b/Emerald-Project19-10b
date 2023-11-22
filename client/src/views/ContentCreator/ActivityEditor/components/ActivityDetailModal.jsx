@@ -1,6 +1,7 @@
-import { Button, Form, Input, message, Modal } from "antd"
+import { Button, Form, Input, message, Modal, DatePicker } from "antd"
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import moment from "moment"
 import {
   getActivity,
   getActivityToolbox,
@@ -236,6 +237,23 @@ const ActivityDetailModal = ({
             placeholder="Enter a link"
           ></Input>
         </Form.Item>
+        <Form.Item
+          label='Due Date'
+          name= 'dueDate'
+          getValueFromEvent={(onChange) => moment(onChange).format('MM-DD-YYYY')}
+          getValueProps={(i) => ({value: moment(i)})}
+          >
+            <DatePicker format='MM-DD-YYYY' style ={{width: '100%'}} />
+        </Form.Item>
+        <Form.Item
+          label='Close Date'
+          name= 'closeDate'
+          getValueFromEvent={(onChange) => moment(onChange).format('MM-DD-YYYY')}
+          getValueProps={(i) => ({value: moment(i)})}
+          >
+            <DatePicker format='MM-DD-YYYY' style ={{width: '100%'}} />
+        </Form.Item>
+
         <Form.Item
           id="form-label"
           wrapperCol={{

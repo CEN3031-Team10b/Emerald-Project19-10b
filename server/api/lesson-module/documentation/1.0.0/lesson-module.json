@@ -594,6 +594,12 @@
                 "activity_template": {
                   "type": "string"
                 },
+                "Due_Date": {
+                  "type": "string"
+                },
+                "Close_Date": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
