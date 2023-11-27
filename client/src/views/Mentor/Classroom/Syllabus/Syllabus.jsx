@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
 import 'react-quill/dist/quill.snow.css';
-import { getClassroom, editSyllabus } from '../../../Utils/requests';
+import { getClassroom, editSyllabus } from '../../../../Utils/requests';
 
-import MentorSubHeader from '../../../components/MentorSubHeader/MentorSubHeader';
-import { getCurrUser } from '../../../Utils/userState';
+import MentorSubHeader from '../../../../components/MentorSubHeader/MentorSubHeader';
+import { getCurrUser } from '../../../../Utils/userState';
 
 const Syllabus = ({ classroomId }) => {
   const [text, setText] = useState('');
