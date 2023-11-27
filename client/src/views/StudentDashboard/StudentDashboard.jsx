@@ -68,6 +68,14 @@ function StudentDashboard() {
     navigate('/notificationcenter');
   };
 
+  const goToSyllabus = () => {
+    navigate('/syllabus');
+  };
+
+  const goToDiscussions = () => {
+    navigate('/discussions');
+  };
+
 
 
   const handleSelection = (activity) => {
@@ -149,13 +157,12 @@ function StudentDashboard() {
         <div id='header'>Extras</div>
         <div>
           <ul>
-            <div id='syllabus-item-wrapper'>
-              <li>Syllabus</li>
-              {/* <Example></Example> */}
-            </div>
-            <div id='syllabus-item-wrapper'>
-              <li>Discussions</li>
-            </div>
+            <button id='syllabus-item-wrapper' onClick={() => goToSyllabus()}>
+              Syllabus
+            </button>
+            <button id='syllabus-item-wrapper' onClick={() => goToDiscussions()}>
+              Discussions
+            </button>
           </ul>
         </div>
       </div>
