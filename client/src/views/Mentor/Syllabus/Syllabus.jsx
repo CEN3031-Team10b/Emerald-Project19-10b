@@ -58,7 +58,7 @@ const Syllabus = ({ classroomId }) => {
         { indent: '+1' },
       ],
       ['formula'],
-      [('link', 'image', 'video')],
+      ['link', 'image', 'video'],
       ['clean'],
     ],
   };

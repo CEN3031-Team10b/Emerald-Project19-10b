@@ -30,7 +30,7 @@ const Post = ({ postId, deletePost }) => {
         { indent: '+1' },
       ],
       ['formula'],
-      [('link', 'image', 'video')],
+      ['link', 'image', 'video'],
       ['clean'],
     ],
   };
