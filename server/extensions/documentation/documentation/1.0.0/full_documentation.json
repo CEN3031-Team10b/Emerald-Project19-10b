@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "11/06/2023 6:11:09 AM"
+    "x-generation-date": "11/27/2023 12:45:36 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -13423,6 +13423,9 @@
                 "type": "string"
               }
             }
+          },
+          "Syllabus": {
+            "type": "string"
           }
         }
       },
@@ -13474,6 +13477,9 @@
             }
           },
           "discussion": {
+            "type": "string"
+          },
+          "Syllabus": {
             "type": "string"
           },
           "created_by": {
@@ -13626,6 +13632,9 @@
               "discussion": {
                 "type": "string"
               },
+              "Syllabus": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -13763,6 +13772,9 @@
                   }
                 },
                 "discussion": {
+                  "type": "string"
+                },
+                "Syllabus": {
                   "type": "string"
                 },
                 "created_by": {
@@ -14316,6 +14328,9 @@
                 "discussion": {
                   "type": "string"
                 },
+                "Syllabus": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -14656,6 +14671,9 @@
                 "discussion": {
                   "type": "string"
                 },
+                "Syllabus": {
+                  "type": "string"
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -14798,6 +14816,9 @@
               "discussion": {
                 "type": "string"
               },
+              "Syllabus": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -14937,6 +14958,9 @@
                 }
               },
               "discussion": {
+                "type": "string"
+              },
+              "Syllabus": {
                 "type": "string"
               },
               "created_by": {
@@ -15305,6 +15329,9 @@
                 }
               },
               "discussion": {
+                "type": "string"
+              },
+              "Syllabus": {
                 "type": "string"
               },
               "created_by": {

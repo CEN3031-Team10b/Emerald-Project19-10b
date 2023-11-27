@@ -748,3 +748,14 @@ export const DELETEPost = async (id) =>
     auth: true,
     error: 'Unable to delete post',
   });
+
+export const editSyllabus = async (id, text) =>
+  makeRequest({
+    method: PUT,
+    path: `${server}/classrooms/${id}`,
+    data: {
+      Syllabus: text,
+    },
+    auth: true,
+    error: 'Unable to edit syllabus',
+  });

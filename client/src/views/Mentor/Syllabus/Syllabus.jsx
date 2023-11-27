@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css';
 import 'react-quill/dist/quill.snow.css';
+import { getClassroom, editSyllabus } from '../../../Utils/requests';
 
 import MentorSubHeader from '../../../components/MentorSubHeader/MentorSubHeader';
 import { getCurrUser } from '../../../Utils/userState';
@@ -10,6 +11,40 @@ const Syllabus = ({ classroomId }) => {
   const [text, setText] = useState('');
   const [finalText, setFinalText] = useState('');
   const [edit, setEdit] = useState(false);
+  const [classroom, setClassroom] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getClassroom(classroomId);
+      if (res.data) {
+        const classroom = res.data;
+        setClassroom(classroom);
+        setFinalText(classroom.Syllabus);
+      } else {
+        message.error(res.err);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (text !== '') {
+      console.log('hello');
+      const editData = async () => {
+        const res = await editSyllabus(classroomId, text);
+        if (res.data) {
+          setText('');
+          setFinalText(text);
+          setEdit(false);
+        } else {
+          message.error(res.err);
+        }
+      };
+      editData();
+    }
+    event.preventDefault();
+  };
 
   const modules = {
     toolbar: [
@@ -39,14 +74,6 @@ const Syllabus = ({ classroomId }) => {
     'link',
     'image',
   ];
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (text != '') {
-      setFinalText(text);
-    }
-    event.preventDefault();
-  };
 
   const handleChange = (event) => {
     setText(event);

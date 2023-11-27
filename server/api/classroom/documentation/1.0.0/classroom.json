@@ -1043,6 +1043,9 @@
                 "type": "string"
               }
             }
+          },
+          "Syllabus": {
+            "type": "string"
           }
         }
       },
@@ -1094,6 +1097,9 @@
             }
           },
           "discussion": {
+            "type": "string"
+          },
+          "Syllabus": {
             "type": "string"
           },
           "created_by": {
