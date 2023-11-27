@@ -20,6 +20,7 @@ const Syllabus = ({ classroomId }) => {
         const classroom = res.data;
         setClassroom(classroom);
         setFinalText(classroom.Syllabus);
+        setText(classroom.Syllabus);
       } else {
         message.error(res.err);
       }
@@ -34,7 +35,6 @@ const Syllabus = ({ classroomId }) => {
       const editData = async () => {
         const res = await editSyllabus(classroomId, text);
         if (res.data) {
-          setText('');
           setFinalText(text);
           setEdit(false);
         } else {
@@ -48,7 +48,8 @@ const Syllabus = ({ classroomId }) => {
 
   const modules = {
     toolbar: [
-      [{ header: [1, 2, false] }],
+      [{ header: '1' }, { header: '2' }, { font: [] }, { align: [] }],
+      [{ size: [] }],
       ['bold', 'italic', 'underline', 'strike', 'blockquote'],
       [
         { list: 'ordered' },
@@ -56,23 +57,28 @@ const Syllabus = ({ classroomId }) => {
         { indent: '-1' },
         { indent: '+1' },
       ],
-      ['link', 'image'],
+      ['formula'],
+      [('link', 'image', 'video')],
       ['clean'],
     ],
   };
 
   const formats = [
-    'header',
     'bold',
+    'color font',
     'italic',
-    'underline',
-    'strike',
-    'blockquote',
-    'list',
-    'bullet',
-    'indent',
     'link',
+    'size',
+    'strike',
+    'underline',
+    'blockquote',
+    'header',
+    'indent',
+    'list',
+    'align',
+    'formula',
     'image',
+    'video',
   ];
 
   const handleChange = (event) => {

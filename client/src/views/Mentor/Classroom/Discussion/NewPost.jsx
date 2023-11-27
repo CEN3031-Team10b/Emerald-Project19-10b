@@ -7,7 +7,8 @@ const NewPost = ({ addPost }) => {
 
   const modules = {
     toolbar: [
-      [{ header: [1, 2, false] }],
+      [{ header: '1' }, { header: '2' }, { font: [] }, { align: [] }],
+      [{ size: [] }],
       ['bold', 'italic', 'underline', 'strike', 'blockquote'],
       [
         { list: 'ordered' },
@@ -15,23 +16,28 @@ const NewPost = ({ addPost }) => {
         { indent: '-1' },
         { indent: '+1' },
       ],
-      ['link', 'image'],
+      ['formula'],
+      [('link', 'image', 'video')],
       ['clean'],
     ],
   };
 
   const formats = [
-    'header',
     'bold',
+    'color font',
     'italic',
-    'underline',
-    'strike',
-    'blockquote',
-    'list',
-    'bullet',
-    'indent',
     'link',
+    'size',
+    'strike',
+    'underline',
+    'blockquote',
+    'header',
+    'indent',
+    'list',
+    'align',
+    'formula',
     'image',
+    'video',
   ];
 
   const handleSubmit = (event) => {
