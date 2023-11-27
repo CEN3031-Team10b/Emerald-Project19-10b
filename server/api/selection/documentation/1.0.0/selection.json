@@ -577,6 +577,9 @@
               "discussion": {
                 "type": "string"
               },
+              "Syllabus": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
