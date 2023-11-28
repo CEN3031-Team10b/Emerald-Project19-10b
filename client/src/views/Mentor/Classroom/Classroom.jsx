@@ -7,6 +7,7 @@ import Roster from './Roster/Roster';
 import Home from './Home/Home';
 import SavedWorkSpaceTab from '../../../components/Tabs/SavedWorkspaceTab';
 import Discussion from './Discussion/Discussion';
+import SendNotificationForm from './SendNotificationForm';
 import Syllabus from './Syllabus/Syllabus';
 import { useSearchParams, useParams } from 'react-router-dom';
 
@@ -57,6 +58,9 @@ export default function Classroom({
         </TabPane>
         <TabPane tab='Discussion' key='discussion'>
           <Discussion classroomId={parseInt(id)} />
+        </TabPane>
+        <TabPane tab='Notifications' key='notifications'>
+          <SendNotificationForm classroomId={parseInt(id)} />
         </TabPane>
       </Tabs>
     </div>

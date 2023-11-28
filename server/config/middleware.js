@@ -22,7 +22,11 @@ module.exports = {
             options: {
               br: false
             }
-        }
+        },
+        cors: {
+            enabled: true,
+            origin: ['http://localhost:3000', 'http://localhost:1337']
+        },
         // logger: {
         //     // dev + prod
         //     level: debug + info,
@@ -30,9 +34,5 @@ module.exports = {
         // }
         
         // dev
-        // cors: {
-        //     enabled: true,
-        //     origin: ['http://localhost:3000', 'http://localhost:1337']
-        // },
     },
 }
