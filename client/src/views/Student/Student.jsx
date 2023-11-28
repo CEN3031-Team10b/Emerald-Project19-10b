@@ -19,6 +19,7 @@ function Student() {
     alert('Use normal alert');
   }
 
+  // Browser Notification System
   function showNotification() {
     var title = 'JavaScript Jeep';
     var icon = 'image-url';
@@ -61,6 +62,8 @@ function Student() {
 
     navigate('/workspace');
   };
+
+  // End browser notification system
 
   return (
     <div className='container nav-padding'>
