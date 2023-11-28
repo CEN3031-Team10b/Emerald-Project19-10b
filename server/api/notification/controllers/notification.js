@@ -23,7 +23,7 @@ module.exports = {
         text,
         students: studentIds,
       });
-\
+
       return ctx.send(notification);
     } catch (error) {
       console.error('Error sending targeted notification:', error);
