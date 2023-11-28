@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/students": {
+    "/notifications": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Student"
+                    "$ref": "#/components/schemas/Notification"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Student"
+          "Notification"
         ],
         "parameters": [
           {
@@ -201,7 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Student"
+                  "$ref": "#/components/schemas/Notification"
                 }
               }
             }
@@ -239,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Student"
+          "Notification"
         ],
         "requestBody": {
           "description": "",
@@ -247,71 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewStudent"
+                "$ref": "#/components/schemas/NewNotification"
               }
             }
           }
         }
       }
     },
-    "/students/me": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Student"
-        ],
-        "parameters": []
-      }
-    },
-    "/students/count": {
+    "/notifications/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -363,12 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Student"
+          "Notification"
         ],
         "parameters": []
       }
     },
-    "/students/{id}": {
+    "/notifications/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -378,7 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Student"
+                  "$ref": "#/components/schemas/Notification"
                 }
               }
             }
@@ -416,7 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Student"
+          "Notification"
         ],
         "parameters": [
           {
@@ -440,7 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Student"
+                  "$ref": "#/components/schemas/Notification"
                 }
               }
             }
@@ -478,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Student"
+          "Notification"
         ],
         "requestBody": {
           "description": "",
@@ -486,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewStudent"
+                "$ref": "#/components/schemas/NewNotification"
               }
             }
           }
@@ -552,91 +495,8 @@
         },
         "summary": "",
         "tags": [
-          "Student"
+          "Notification"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "description": "",
-            "deprecated": false,
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ]
-      }
-    },
-    "/students/enrolled/{id}": {
-      "put": {
-        "deprecated": false,
-        "description": "Update a record",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Student"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "foo": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
         "parameters": [
           {
             "name": "id",
@@ -654,122 +514,66 @@
   },
   "components": {
     "schemas": {
-      "Student": {
+      "Notification": {
         "required": [
-          "id",
-          "enrolled"
+          "id"
         ],
         "properties": {
           "id": {
             "type": "string"
           },
-          "name": {
+          "text": {
             "type": "string"
           },
-          "character": {
-            "type": "string"
+          "read": {
+            "type": "boolean",
+            "default": false
           },
-          "classroom": {
-            "required": [
-              "id",
-              "code"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "school": {
-                "type": "string"
-              },
-              "sessions": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "mentors": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "students": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "code": {
-                "type": "string"
-              },
-              "grade": {
-                "type": "string"
-              },
-              "selections": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "authorized_workspaces": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "discussion": {
-                "type": "string"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
+          "flagged": {
+            "type": "boolean",
+            "default": false
           },
-          "sessions": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "students": {
             "type": "array",
             "items": {
               "required": [
-                "id"
+                "id",
+                "enrolled"
               ],
               "properties": {
                 "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "character": {
                   "type": "string"
                 },
                 "classroom": {
                   "type": "string"
                 },
-                "students": {
+                "sessions": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
                 },
-                "submissions": {
+                "enrolled": {
+                  "type": "boolean"
+                },
+                "last_logged_in": {
+                  "type": "string"
+                },
+                "notifications": {
                   "type": "array",
                   "items": {
                     "type": "string"
                   }
-                },
-                "saves": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "unit": {
-                  "type": "string"
-                },
-                "grade": {
-                  "type": "string"
-                },
-                "lesson_module": {
-                  "type": "string"
                 },
                 "created_by": {
                   "type": "string"
@@ -780,89 +584,38 @@
               }
             }
           },
-          "enrolled": {
-            "type": "boolean",
-            "default": true
-          },
-          "last_logged_in": {
+          "published_at": {
             "type": "string",
             "format": "date-time"
-          },
-          "notifications": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "text": {
-                  "type": "string"
-                },
-                "read": {
-                  "type": "boolean"
-                },
-                "flagged": {
-                  "type": "boolean"
-                },
-                "date": {
-                  "type": "string"
-                },
-                "students": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "published_at": {
-                  "type": "string"
-                },
-                "created_by": {
-                  "type": "string"
-                },
-                "updated_by": {
-                  "type": "string"
-                }
-              }
-            }
           }
         }
       },
-      "NewStudent": {
-        "required": [
-          "enrolled"
-        ],
+      "NewNotification": {
         "properties": {
-          "name": {
+          "text": {
             "type": "string"
           },
-          "character": {
-            "type": "string"
+          "read": {
+            "type": "boolean",
+            "default": false
           },
-          "classroom": {
-            "type": "string"
+          "flagged": {
+            "type": "boolean",
+            "default": false
           },
-          "sessions": {
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "students": {
             "type": "array",
             "items": {
               "type": "string"
             }
           },
-          "enrolled": {
-            "type": "boolean",
-            "default": true
-          },
-          "last_logged_in": {
+          "published_at": {
             "type": "string",
             "format": "date-time"
-          },
-          "notifications": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
           },
           "created_by": {
             "type": "string"
@@ -876,7 +629,7 @@
   },
   "tags": [
     {
-      "name": "Student"
+      "name": "Notification"
     }
   ]
 }
