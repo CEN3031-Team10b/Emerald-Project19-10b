@@ -163,6 +163,7 @@ export const createActivity = async (activity, learningStandard) =>
     data: {
       lesson_module: learningStandard,
       number: activity,
+      DueDate: "00/00/0000",
       template: '<xml xmlns="http://www.w3.org/1999/xhtml"></xml>)',
     },
     auth: true,
@@ -483,9 +484,8 @@ export const updateActivityDetails = async (
   scienceComponents,
   makingComponents,
   computationComponents,
-  Due_Date,
-  Close_Date
-) =>
+  DueDate,
+) => 
   makeRequest({
     method: PUT,
     path: `${server}/activities/${id}`,
@@ -499,13 +499,27 @@ export const updateActivityDetails = async (
       scienceComponents,
       makingComponents,
       computationComponents,
-      Due_Date,
-      Close_Date,
+      DueDate,
     },
     auth: true,
     error: 'Failed to update unit',
   });
 
+  /*
+export const updateActivityDueDate = async (
+  id, 
+  DueDate,
+) =>
+  makeRequest({
+    method: PUT,
+    path: `${server}/activities/${id}`,
+    data: {
+      DueDate,
+    },
+    auth: true,
+    error: 'Failed to add Due Date',
+  });
+*/
 export const getLessonModuleActivities = async (lsId) =>
   makeRequest({
     method: GET,

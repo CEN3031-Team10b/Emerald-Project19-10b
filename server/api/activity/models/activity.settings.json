@@ -47,11 +47,8 @@
       "type": "text",
       "required": false
     },
-    "Due_Date": {
-      "type": "date"
-    },
-    "Close_Date": {
-      "type": "date"
+    "DueDate": {
+      "type": "string"
     }
   }
 }

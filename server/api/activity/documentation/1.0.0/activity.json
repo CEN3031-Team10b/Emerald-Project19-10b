@@ -887,13 +887,8 @@
           "activity_template": {
             "type": "string"
           },
-          "Due_Date": {
-            "type": "string",
-            "format": "date"
-          },
-          "Close_Date": {
-            "type": "string",
-            "format": "date"
+          "DueDate": {
+            "type": "string"
           }
         }
       },
@@ -939,13 +934,8 @@
           "activity_template": {
             "type": "string"
           },
-          "Due_Date": {
-            "type": "string",
-            "format": "date"
-          },
-          "Close_Date": {
-            "type": "string",
-            "format": "date"
+          "DueDate": {
+            "type": "string"
           },
           "created_by": {
             "type": "string"
