@@ -9,6 +9,7 @@
     "@fullcalendar/list": "^6.1.9",
     "@fullcalendar/timegrid": "^6.1.9",
     "@loadable/component": "^5.15.2",
+    "@syncfusion/ej2-react-calendars": "^23.2.7",
     "antd": "^4.24.8",
     "axios": "^1.4.0",
     "cross-env": "^7.0.3",
