@@ -14,7 +14,7 @@ import {
 } from '../../../../Utils/requests';
 import { message, Tag } from 'antd';
 
-const Discussion = ({ classroomId }) => {
+const Discussion = ({ classroomId, discussionId }) => {
   const [classroom, setClassroom] = useState({});
   const [discussion, setDiscussion] = useState({});
   const [posts, setPosts] = useState([]);
@@ -45,15 +45,31 @@ const Discussion = ({ classroomId }) => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await getClassroom(classroomId);
-      if (res.data) {
-        const classroom = res.data;
-        setClassroom(classroom);
-        if (!classroom.discussion) {
-          createDiscussion(classroomId);
+    if (classroomId) {
+      const fetchData = async () => {
+        const res = await getClassroom(classroomId);
+        if (res.data) {
+          const classroom = res.data;
+          setClassroom(classroom);
+          if (!classroom.discussion) {
+            createDiscussion(classroomId);
+          }
+          const dis = await getDiscussion(classroom.discussion.id);
+          if (dis.data) {
+            const discussionData = dis.data;
+            setDiscussion(discussionData);
+            setPosts(discussionData.discussion_posts);
+          } else {
+            message.error(dis.err);
+          }
+        } else {
+          message.error(res.err);
         }
-        const dis = await getDiscussion(classroom.discussion.id);
+      };
+      fetchData();
+    } else {
+      const fetchData = async () => {
+        const dis = await getDiscussion(discussionId);
         if (dis.data) {
           const discussionData = dis.data;
           setDiscussion(discussionData);
@@ -61,11 +77,9 @@ const Discussion = ({ classroomId }) => {
         } else {
           message.error(dis.err);
         }
-      } else {
-        message.error(res.err);
-      }
-    };
-    fetchData();
+      };
+      fetchData();
+    }
   }, []);
 
   return (

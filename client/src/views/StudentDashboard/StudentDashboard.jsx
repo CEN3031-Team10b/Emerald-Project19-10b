@@ -6,15 +6,19 @@ import { getStudentClassroom } from '../../Utils/requests';
 import './StudentDashboard.less';
 import { CalendarComponent } from '@syncfusion/ej2-react-calendars';
 
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.bubble.css';
 
+import Discussion from '../Mentor/Classroom/Discussion/Discussion';
 
 function StudentDashboard() {
-
+  const [discussionId, setDiscussionId] = useState();
+  const [syllabus, setSyllabus] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
   };
-  
+
   const handleOk = () => {
     setIsModalOpen(false);
   };
@@ -27,10 +31,9 @@ function StudentDashboard() {
   const showDiscussionModal = () => {
     setIsDiscussionModalOpen(true);
   };
-  
+
   const handleDiscussionOk = () => {
     setIsDiscussionModalOpen(false);
-    goToDiscussions();
   };
 
   const handleDiscussionCancel = () => {
@@ -40,36 +43,34 @@ function StudentDashboard() {
   const [learningStandard, setLessonModule] = useState({});
   const navigate = useNavigate();
 
-
-
-//   // Browser Notification System
-  let permission = Notification.permission;
-  if(permission === "granted") {
-    showNotification();
-  } else if(permission === "default"){
-    requestAndShowPermission();
-  } else {
-    alert("Browser Notification");
-  }
+  //   // Browser Notification System
+  // let permission = Notification.permission;
+  // if (permission === 'granted') {
+  //   showNotification();
+  // } else if (permission === 'default') {
+  //   requestAndShowPermission();
+  // } else {
+  //   alert('Browser Notification');
+  // }
 
   function showNotification() {
-    var title = "CASMM";
-    var icon = "image-url"
-    var body = "New notification from CASMM";
+    var title = 'CASMM';
+    var icon = 'image-url';
+    var body = 'New notification from CASMM';
     var notification = new Notification(title, { body, icon });
-    notification.onclick = () => { 
-           notification.close();
-           window.parent.focus();
-    }
- }
+    notification.onclick = () => {
+      notification.close();
+      window.parent.focus();
+    };
+  }
 
- function requestAndShowPermission() {
-  Notification.requestPermission(function (permission) {
-     if (permission === "granted") {
-           showNotification();
-     }
-  });
-}
+  function requestAndShowPermission() {
+    Notification.requestPermission(function (permission) {
+      if (permission === 'granted') {
+        showNotification();
+      }
+    });
+  }
 
   // End browser notification system
 
@@ -78,6 +79,10 @@ function StudentDashboard() {
       try {
         const res = await getStudentClassroom();
         if (res.data) {
+          if (res.data.classroom) {
+            setDiscussionId(res.data.classroom.discussion);
+            setSyllabus(res.data.classroom.Syllabus);
+          }
           if (res.data.lesson_module) {
             setLessonModule(res.data.lesson_module);
           }
@@ -101,8 +106,6 @@ function StudentDashboard() {
     navigate('/discussions');
   };
 
-
-
   const handleSelection = (activity) => {
     activity.lesson_module_name = learningStandard.name;
     localStorage.setItem('my-activity', JSON.stringify(activity));
@@ -120,7 +123,9 @@ function StudentDashboard() {
         <ul>
           {learningStandard.activities ? (
             learningStandard.activities
-              .sort((activity1, activity2) => activity1.number - activity2.number)
+              .sort(
+                (activity1, activity2) => activity1.number - activity2.number
+              )
               .map((activity) => (
                 <div
                   key={activity.id}
@@ -140,10 +145,10 @@ function StudentDashboard() {
           )}
         </ul>
       </div>
-      
-      <aside id="sidebar">
+
+      <aside id='sidebar'>
         <div id='header'>
-            <div>Notifications</div>
+          <div>Notifications</div>
         </div>
         <button id='notification-button' onClick={() => goToNotifications()}>
           View All
@@ -169,7 +174,7 @@ function StudentDashboard() {
 
       <div id='timeline'>
         <div>
-          <CalendarComponent id="calendar" />;
+          <CalendarComponent id='calendar' />;
         </div>
       </div>
 
@@ -180,31 +185,34 @@ function StudentDashboard() {
             <button id='syllabus-item-wrapper' onClick={showModal}>
               Syllabus
             </button>
-            <Modal title="Class Syllabus" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-              <p>Welcome to CASMM programming class!</p>
-              <p>Work will be graded for participation and at the end of every class every group will show off what they have done for others to see.</p>
-              <p>There is no one way to do anything and we hope you will have a lot of fun!</p>
+            <Modal
+              title='Class Syllabus'
+              open={isModalOpen}
+              onOk={handleOk}
+              onCancel={handleCancel}
+            >
+              <ReactQuill value={syllabus} readOnly={true} theme={'bubble'} />
             </Modal>
 
             <button id='syllabus-item-wrapper' onClick={showDiscussionModal}>
               Discussions
             </button>
-            <Modal title="Class Discussion" open={isDiscussionModalOpen} onOk={handleDiscussionOk} onCancel={handleDiscussionCancel}>
-              <p>Discussion 1</p>
-              <p>Does Wet Dry World Negative Emotional Aura?</p>
-              <img id='modal-image' src="https://i1.sndcdn.com/artworks-CU272i0ngCysxGdN-V3ITYA-t500x500.jpg" alt="Image of Wet Dry World Skybox" />
+            <Modal
+              title='Class Discussion'
+              open={isDiscussionModalOpen}
+              onOk={handleDiscussionOk}
+              onCancel={handleDiscussionCancel}
+              style={{ display: 'flex', justifyContent: 'center' }}
+            >
+              <Discussion discussionId={discussionId} />
             </Modal>
 
-            <button id='syllabus-item-wrapper'>
-              Gallery
-            </button>
+            <button id='syllabus-item-wrapper'>Gallery</button>
           </ul>
         </div>
       </div>
-
     </div>
   );
 }
 
 export default StudentDashboard;
-
