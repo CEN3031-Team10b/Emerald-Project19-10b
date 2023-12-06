@@ -42,6 +42,12 @@ export default function NavBar() {
           &nbsp; Dashboard
         </Menu.Item>
       ) : null}
+	  {shouldShowRoute('NotificationCenter') ? (
+		<Menu.Item key='9' onClick={() => handleRouteChange(routes.NotificationCenter)}>
+		  <i className='fa fa-bell' /> {}
+		  &nbsp; Notifications
+		</Menu.Item>
+	  ) : null}
       {shouldShowRoute('ContentCreatorDashboard') ? (
         <Menu.Item
           key='2'

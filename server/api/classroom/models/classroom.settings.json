@@ -50,6 +50,9 @@
     "discussion": {
       "via": "classroom",
       "model": "discussion"
+    },
+    "Syllabus": {
+      "type": "text"
     }
   }
 }
