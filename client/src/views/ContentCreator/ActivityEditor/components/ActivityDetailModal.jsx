@@ -1,6 +1,7 @@
-import { Button, Form, Input, message, Modal } from "antd"
+import { Button, Form, Input, message, Modal, DatePicker } from "antd"
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import moment from "moment"
 import {
   getActivity,
   getActivityToolbox,
@@ -33,7 +34,10 @@ const ActivityDetailModal = ({
   const [computationComponents, setComputationComponents] = useState([])
 
   const [linkError, setLinkError] = useState(false)
+  const [dateError, setDateError] = useState(false)
   const [submitButton, setSubmitButton] = useState(0)
+  const [DueDate, setDueDate] = useState("")
+
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -46,9 +50,11 @@ const ActivityDetailModal = ({
       setDescription(response.data.description)
       //setTemplate(response.data.template)
       setStandardS(response.data.StandardS)
+      setDueDate(response.data.DueDate)
       setImages(response.data.images)
       setLink(response.data.link)
       setLinkError(false)
+      setDateError(false)
       const science = response.data.learning_components
         .filter(component => component.learning_component_type === SCIENCE)
         .map(element => {
@@ -82,6 +88,15 @@ const ActivityDetailModal = ({
     return n
   }
 
+  const checkDate = n => {
+    const regex = 
+      /[0-9]{2,2}\/[0-9]{2,2}\/[0-9]{4,4}/g
+    if(n.search(regex) === -1) {
+      return null
+    }
+    return n
+  }
+
   const handleViewActivityLevelTemplate = async activity => {
     const allToolBoxRes = await getActivityToolboxAll()
     const selectedToolBoxRes = await getActivityToolbox(activity.id)
@@ -104,15 +119,23 @@ const ActivityDetailModal = ({
   }
 
   const handleSave = async () => {
+    const goodDate = checkDate(DueDate)
+    if(!goodDate) {
+      setDateError(true)
+      message.error("Please enter a valid date with format MM/DD/YYYY", 4)
+      return
+    }
     if (link) {
       const goodLink = checkURL(link)
       if (!goodLink) {
-        setLinkError(true)
+      setLinkError(true)
         message.error("Please Enter a valid URL starting with HTTP/HTTPS", 4)
         return
       }
     }
     setLinkError(false)
+    setDateError(false)
+    //res is not getting DueDate
     const res = await updateActivityDetails(
       selectActivity.id,
       description,
@@ -122,7 +145,8 @@ const ActivityDetailModal = ({
       link,
       scienceComponents,
       makingComponents,
-      computationComponents
+      computationComponents,
+      DueDate,
     )
     if (res.err) {
       message.error(res.err)
@@ -130,7 +154,7 @@ const ActivityDetailModal = ({
       message.success("Successfully saved activity")
       // just save the form
       if (submitButton === 0) {
-        const getActivityAll = await getLessonModuleActivities(viewing)
+        const getActivityAll = await getLessonModuleActivities(selectActivity)
         const myActivities = getActivityAll.data
         myActivities.sort((a, b) => (a.number > b.number ? 1 : -1))
         setActivities([...myActivities])
@@ -234,6 +258,19 @@ const ActivityDetailModal = ({
             value={link}
             style={linkError ? { backgroundColor: "#FFCCCC" } : {}}
             placeholder="Enter a link"
+          ></Input>
+        </Form.Item>
+        <Form.Item id="form-label" label="Due Date (MM/DD/YYYY)">
+          <Input
+            onChange={e => {
+              setDueDate(e.target.value)
+              setDateError(false)
+            }}
+            value={DueDate}
+            className="input"
+            required
+            style={dateError ? { backgroundColor: "#FFCCCC" } : {}}
+            placeholder="Enter due date (MM/DD/YYYY)"
           ></Input>
         </Form.Item>
         <Form.Item

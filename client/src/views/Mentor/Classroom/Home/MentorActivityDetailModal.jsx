@@ -20,6 +20,7 @@ const MentorActivityDetailModal = ({
   selectActivity,
   setActivities,
   open,
+  viewing,
 }) => {
   const [description, setDescription] = useState("")
   const [template, setTemplate] = useState("")
@@ -34,6 +35,8 @@ const MentorActivityDetailModal = ({
   const [activityDetailsVisible, setActivityDetailsVisible] = useState(false)
   const [linkError, setLinkError] = useState(false)
   const [submitButton, setSubmitButton] = useState(0)
+  const [DueDate, setDueDate] = useState("")
+  const [dateError, setDateError] = useState(false)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -47,6 +50,7 @@ const MentorActivityDetailModal = ({
       setTemplate(response.data.template)
       setActivityTemplate(response.data.activity_template)
       setStandardS(response.data.StandardS)
+      setDueDate(response.data.DueDate)
       setImages(response.data.images)
       setLink(response.data.link)
       setLinkError(false)
@@ -83,6 +87,15 @@ const MentorActivityDetailModal = ({
     return n
   }
 
+  const checkDate = n => {
+    const regex = 
+      /[0-9]{2,2}\/[0-9]{2,2}\/[0-9]{4,4}/g
+    if(n.search(regex) === -1) {
+      return null
+    }
+    return n
+  }
+
   const handleViewActivityLevelTemplate = async activity => {
     const allToolBoxRes = await getActivityToolboxAll()
     const selectedToolBoxRes = await getActivityToolbox(activity.id)
@@ -104,6 +117,12 @@ const MentorActivityDetailModal = ({
     navigate("/activity")
   }
   const handleSave = async () => {
+    const goodDate = checkDate(DueDate)
+    if(!goodDate) {
+      setDateError(true)
+      message.error("Please enter a valid date with format MM/DD/YYYY", 4)
+      return
+    }
     if (link) {
       const goodLink = checkURL(link)
       if (!goodLink) {
@@ -113,6 +132,8 @@ const MentorActivityDetailModal = ({
       }
     }
     setLinkError(false)
+    //issue is here. Res does not have DueDate stored in it
+    
     const res = await updateActivityDetails(
       selectActivity.id,
       description,
@@ -122,18 +143,23 @@ const MentorActivityDetailModal = ({
       link,
       scienceComponents,
       makingComponents,
-      computationComponents
+      computationComponents,
+      DueDate,
     )
+    console.log(res.data.description)
+    console.log(res.data.DueDate)
     if (res.err) {
       message.error(res.err)
     } else {
       message.success("Successfully saved activity")
       // just save the form
       if (submitButton === 0) {
-        const getActivityAll = await getLessonModuleActivities(viewing)
+        const getActivityAll = await getLessonModuleActivities(selectActivity.id)
         const myActivities = getActivityAll.data
-        myActivities.sort((a, b) => (a.number > b.number ? 1 : -1))
-        setActivities([...myActivities])
+        if(myActivities !== null) {
+          myActivities.sort((a, b) => (a.number > b.number ? 1 : -1))
+          setActivities([...myActivities])
+        }
         // save the form and go to workspace
       } else if (submitButton === 1) {
         setActivityDetailsVisible(false)
@@ -259,6 +285,19 @@ const MentorActivityDetailModal = ({
             value={link}
             style={linkError ? { backgroundColor: "#FFCCCC" } : {}}
             placeholder="Enter a link"
+          ></Input>
+        </Form.Item>
+        <Form.Item id="form-label" label="Due Date (MM/DD/YYYY)">
+          <Input
+            onChange={e => {
+              setDueDate(e.target.value)
+              setDateError(false)
+            }}
+            value={DueDate}
+            className="input"
+            required
+            style={dateError ? { backgroundColor: "#FFCCCC" } : {}}
+            placeholder="Enter due date (MM/DD/YYYY)"
           ></Input>
         </Form.Item>
         <Form.Item
