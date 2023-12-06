@@ -25,6 +25,8 @@ export default function LessonModuleCreator({
   const [link, setLink] = useState("")
   const [linkError, setLinkError] = useState(false)
   const [learningStandardObj, setLessonModuleObj] = useState("")
+  const [releaseDate, setReleaseDate] = useState("")
+  const [closingDate, setClosingDate] = useState("")
   // eslint-disable-next-line
   const [_, setSearchParams] = useSearchParams()
 
@@ -55,6 +57,20 @@ export default function LessonModuleCreator({
   }
 
   const handleSubmit = async () => {
+    const releaseDateObj = new Date(releaseDate);
+    const closingDateObj = new Date(closingDate);
+    const currentDate = new Date();
+
+    if(releaseDateObj >= closingDateObj) {
+      message.error("Closing date must be after the opening date", 4);
+      return;
+    }
+
+    if(releaseDateObj < currentDate || closingDateObj < currentDate) {
+      message.error("Dates cannot be in the past.", 4);
+      return;
+    }
+
     if (link) {
       const goodLink = checkURL(link)
       if (!goodLink) {
@@ -70,7 +86,9 @@ export default function LessonModuleCreator({
       0,
       unit,
       standards,
-      link
+      link,
+      releaseDate,
+      closingDate
     )
     if (res.err) {
       message.error("Fail to create new learning standard")
@@ -202,6 +220,26 @@ export default function LessonModuleCreator({
               value={link}
               placeholder="Enter a link"
             />
+          </Form.Item>
+          <Form.Item label="Release Date">
+            <Input
+              type="date"
+              onChange={e => {
+                setReleaseDate(e.target.value)
+              }}
+              value={releaseDate}
+              placeholder="Select release date"
+            ></Input>
+          </Form.Item>
+          <Form.Item label="Closing Date">
+            <Input
+              type="date"
+              onChange={e => {
+                setClosingDate(e.target.value)
+              }}
+              value={closingDate}
+              placeholder="Select closing date"
+            ></Input>
           </Form.Item>
           <Form.Item
             wrapperCol={{

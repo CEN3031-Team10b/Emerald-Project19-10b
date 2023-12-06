@@ -12,8 +12,8 @@
   },
   "attributes": {
     "classroom": {
-      "model": "classroom",
-      "via": "discussion"
+      "via": "discussion",
+      "model": "classroom"
     },
     "discussion_posts": {
       "collection": "discussion-post"

@@ -4,38 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
 import { getStudentClassroom } from '../../Utils/requests';
 import './Student.less';
+import { getCurrUser } from '../../Utils/userState';
 
 function Student() {
   const [learningStandard, setLessonModule] = useState({});
   const navigate = useNavigate();
 
-  let permission = Notification.permission;
-  if(permission === "granted") {
-    showNotification();
-  } else if(permission === "default"){
-    requestAndShowPermission();
-  } else {
-    alert("Use normal alert");
-  }
-
-  function showNotification() {
-    var title = "JavaScript Jeep";
-    var icon = "image-url"
-    var body = "Message to be displayed";
-    var notification = new Notification(title, { body, icon });
-    notification.onclick = () => { 
-           notification.close();
-           window.parent.focus();
-    }
- }
-
- function requestAndShowPermission() {
-  Notification.requestPermission(function (permission) {
-     if (permission === "granted") {
-           showNotification();
-     }
-  });
-}
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,6 +18,7 @@ function Student() {
         if (res.data) {
           if (res.data.lesson_module) {
             setLessonModule(res.data.lesson_module);
+            console.log(res.data);
           }
         } else {
           message.error(res.err);
@@ -60,6 +35,8 @@ function Student() {
     navigate('/workspace');
   };
 
+  // End browser notification system
+
   return (
     <div className='container nav-padding'>
       <NavBar />
@@ -70,7 +47,9 @@ function Student() {
         <ul>
           {learningStandard.activities ? (
             learningStandard.activities
-              .sort((activity1, activity2) => activity1.number - activity2.number)
+              .sort(
+                (activity1, activity2) => activity1.number - activity2.number
+              )
               .map((activity) => (
                 <div
                   key={activity.id}

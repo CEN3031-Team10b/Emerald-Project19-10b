@@ -943,6 +943,12 @@
                 "last_logged_in": {
                   "type": "string"
                 },
+                "notifications": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
                 "created_by": {
                   "type": "string"
                 },
@@ -1043,6 +1049,9 @@
                 "type": "string"
               }
             }
+          },
+          "Syllabus": {
+            "type": "string"
           }
         }
       },
@@ -1094,6 +1103,9 @@
             }
           },
           "discussion": {
+            "type": "string"
+          },
+          "Syllabus": {
             "type": "string"
           },
           "created_by": {

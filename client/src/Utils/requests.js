@@ -758,3 +758,22 @@ export const createDiscussion = async (classroomId) =>
     auth: true,
     error: 'Unable to add discussion',
   });
+
+export const DELETEPost = async (id) =>
+  makeRequest({
+    method: DELETE,
+    path: `${server}/discussion-posts/${id}`,
+    auth: true,
+    error: 'Unable to delete post',
+  });
+
+export const editSyllabus = async (id, text) =>
+  makeRequest({
+    method: PUT,
+    path: `${server}/classrooms/${id}`,
+    data: {
+      Syllabus: text,
+    },
+    auth: true,
+    error: 'Unable to edit syllabus',
+  });
