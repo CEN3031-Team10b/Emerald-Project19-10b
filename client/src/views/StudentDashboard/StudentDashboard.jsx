@@ -1,4 +1,4 @@
-import { message } from 'antd';
+import { message, Modal } from 'antd';
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../../components/NavBar/NavBar';
@@ -6,18 +6,43 @@ import { getStudentClassroom } from '../../Utils/requests';
 import './StudentDashboard.less';
 import { CalendarComponent } from '@syncfusion/ej2-react-calendars';
 
-import Example from './syllabusModal';
-
 
 
 function StudentDashboard() {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const [isDiscussionModalOpen, setIsDiscussionModalOpen] = useState(false);
+  const showDiscussionModal = () => {
+    setIsDiscussionModalOpen(true);
+  };
+  
+  const handleDiscussionOk = () => {
+    setIsDiscussionModalOpen(false);
+    goToDiscussions();
+  };
+
+  const handleDiscussionCancel = () => {
+    setIsDiscussionModalOpen(false);
+  };
 
   const [learningStandard, setLessonModule] = useState({});
   const navigate = useNavigate();
 
 
 
-  // Browser Notification System
+//   // Browser Notification System
   let permission = Notification.permission;
   if(permission === "granted") {
     showNotification();
@@ -65,7 +90,7 @@ function StudentDashboard() {
   }, []);
 
   const goToNotifications = () => {
-    navigate('/notificationcenter');
+    navigate('/notifications');
   };
 
   const goToSyllabus = () => {
@@ -125,24 +150,19 @@ function StudentDashboard() {
         </button>
         <ul>
           <div id='notification-item-wrapper'>
-            <li>Notification 1</li>
-            <li>It's</li>
+            <li>Assignment #3 is due tomorrow!</li>
           </div>
           <div id='notification-item-wrapper'>
-            <li>Notification 2</li>
-            <li>a</li>
+            <li>New lecture material is available.</li>
           </div>
           <div id='notification-item-wrapper'>
-            <li>Notification 3</li>
-            <li>me</li>
+            <li>Class will meet in room 202 today.</li>
           </div>
           <div id='notification-item-wrapper'>
-            <li>Notification 4</li>
-            <li>Mario</li>
+            <li>No homework this weekend.</li>
           </div>
           <div id='notification-item-wrapper'>
-            <li>Notification 5</li>
-            <li>luigi</li>
+            <li>Share your work to the gallery!</li>
           </div>
         </ul>
       </aside>
@@ -157,11 +177,26 @@ function StudentDashboard() {
         <div id='header'>Extras</div>
         <div>
           <ul>
-            <button id='syllabus-item-wrapper' onClick={() => goToSyllabus()}>
+            <button id='syllabus-item-wrapper' onClick={showModal}>
               Syllabus
             </button>
-            <button id='syllabus-item-wrapper' onClick={() => goToDiscussions()}>
+            <Modal title="Class Syllabus" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+              <p>Welcome to CASMM programming class!</p>
+              <p>Work will be graded for participation and at the end of every class every group will show off what they have done for others to see.</p>
+              <p>There is no one way to do anything and we hope you will have a lot of fun!</p>
+            </Modal>
+
+            <button id='syllabus-item-wrapper' onClick={showDiscussionModal}>
               Discussions
+            </button>
+            <Modal title="Class Discussion" open={isDiscussionModalOpen} onOk={handleDiscussionOk} onCancel={handleDiscussionCancel}>
+              <p>Discussion 1</p>
+              <p>Does Wet Dry World Negative Emotional Aura?</p>
+              <img id='modal-image' src="https://i1.sndcdn.com/artworks-CU272i0ngCysxGdN-V3ITYA-t500x500.jpg" alt="Image of Wet Dry World Skybox" />
+            </Modal>
+
+            <button id='syllabus-item-wrapper'>
+              Gallery
             </button>
           </ul>
         </div>
