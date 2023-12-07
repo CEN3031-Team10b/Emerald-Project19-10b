@@ -15,6 +15,7 @@ import ActivityLevelReportView from './views/Researcher/ActivityLevelReportView'
 import GroupReport from './views/Researcher/GroupReport';
 import Report from './views/Researcher/Report';
 import Student from './views/Student/Student';
+import StudentDashboard from './views/StudentDashboard/StudentDashboard';
 import StudentLogin from './views/StudentLogin/StudentLogin';
 import ForgetPassword from './views/TeacherLogin/ForgetPassword';
 import ResetPassword from './views/TeacherLogin/ResetPassword';
@@ -78,6 +79,14 @@ const App = () => {
           element={
             <PrivateRoute>
               <Student />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/studentdashboard'
+          element={
+            <PrivateRoute>
+              <StudentDashboard />
             </PrivateRoute>
           }
         />

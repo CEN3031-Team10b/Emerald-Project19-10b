@@ -163,6 +163,7 @@ export const createActivity = async (activity, learningStandard) =>
     data: {
       lesson_module: learningStandard,
       number: activity,
+      DueDate: "00/00/0000",
       template: '<xml xmlns="http://www.w3.org/1999/xhtml"></xml>)',
     },
     auth: true,
@@ -482,8 +483,9 @@ export const updateActivityDetails = async (
   link,
   scienceComponents,
   makingComponents,
-  computationComponents
-) =>
+  computationComponents,
+  DueDate,
+) => 
   makeRequest({
     method: PUT,
     path: `${server}/activities/${id}`,
@@ -497,11 +499,27 @@ export const updateActivityDetails = async (
       scienceComponents,
       makingComponents,
       computationComponents,
+      DueDate,
     },
     auth: true,
     error: 'Failed to update unit',
   });
 
+  /*
+export const updateActivityDueDate = async (
+  id, 
+  DueDate,
+) =>
+  makeRequest({
+    method: PUT,
+    path: `${server}/activities/${id}`,
+    data: {
+      DueDate,
+    },
+    auth: true,
+    error: 'Failed to add Due Date',
+  });
+*/
 export const getLessonModuleActivities = async (lsId) =>
   makeRequest({
     method: GET,
@@ -739,4 +757,23 @@ export const createDiscussion = async (classroomId) =>
     },
     auth: true,
     error: 'Unable to add discussion',
+  });
+
+export const DELETEPost = async (id) =>
+  makeRequest({
+    method: DELETE,
+    path: `${server}/discussion-posts/${id}`,
+    auth: true,
+    error: 'Unable to delete post',
+  });
+
+export const editSyllabus = async (id, text) =>
+  makeRequest({
+    method: PUT,
+    path: `${server}/classrooms/${id}`,
+    data: {
+      Syllabus: text,
+    },
+    auth: true,
+    error: 'Unable to edit syllabus',
   });

@@ -637,6 +637,9 @@
               "activity_template": {
                 "type": "string"
               },
+              "DueDate": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },
@@ -674,6 +677,12 @@
               },
               "last_logged_in": {
                 "type": "string"
+              },
+              "notifications": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
               "created_by": {
                 "type": "string"

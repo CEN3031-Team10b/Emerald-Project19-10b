@@ -254,6 +254,10 @@ export default function Home({ classroomId, viewing }) {
                               );
                             })}
                         </p>
+                        <p>
+                          <strong>Due Date: </strong>
+                          {activity.Due_Date}
+                        </p>
                         {activity.link ? (
                           <p>
                             <strong>Link to Additional Information: </strong>

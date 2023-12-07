@@ -886,6 +886,9 @@
           },
           "activity_template": {
             "type": "string"
+          },
+          "DueDate": {
+            "type": "string"
           }
         }
       },
@@ -929,6 +932,9 @@
             }
           },
           "activity_template": {
+            "type": "string"
+          },
+          "DueDate": {
             "type": "string"
           },
           "created_by": {
