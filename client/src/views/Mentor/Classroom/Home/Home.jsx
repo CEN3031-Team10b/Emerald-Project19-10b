@@ -24,6 +24,30 @@ export default function Home({ classroomId, viewing }) {
   const MAKING = 2;
   const COMPUTATION = 3;
 
+  // Function to compare due dates for sorting
+  const compareDueDates = (activityA, activityB) => {
+      const dateA = new Date(activityA.Due_Date);
+      const dateB = new Date(activityB.Due_Date);
+      return dateA - dateB;
+    };
+
+    // Function to calculate due date color
+    const calculateDueDateColor = (dueDate) => {
+        const today = new Date();
+        const oneWeek = new Date();
+        oneWeek.setDate(today.getDate() + 7);
+        const twoWeeks = new Date();
+        twoWeeks.setDate(today.getDate() + 14);
+
+        if (dueDate <= today) {
+            return 'red';
+        } else if (dueDate <= oneWeek) {
+            return 'yellow'; 
+        } else {
+            return 'green'; 
+        }
+    };
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await getClassroom(classroomId);
@@ -41,10 +65,13 @@ export default function Home({ classroomId, viewing }) {
               message.error(lsRes.err);
             }
             const activityRes = await getLessonModuleActivities(lsRes.data.id);
-            if (activityRes) setActivities(activityRes.data);
-            else {
-              message.error(activityRes.err);
-            }
+              if (activityRes) {
+                  // Sort activities by due dates
+                  const sortedActivities = activityRes.data.slice().sort(compareDueDates);
+                  setActivities(sortedActivities);
+              } else {
+                  message.error(activityRes.err);
+              }
           }
         });
       } else {
@@ -124,7 +151,8 @@ export default function Home({ classroomId, viewing }) {
               {activities ? (
                 <div id='card-btn-container' className='flex space-between'>
                   {activities.map((activity) => (
-                    <div id="view-activity-card" key={activity.id}>
+                      // highlight the due date with respective color
+                      <div id="view-activity-card" key={activity.id} style={{ borderColor: calculateDueDateColor(new Date(activity.Due_Date)) }}> 
                       <div id='activity-title'>
                        Activity Level {activity.number}
                        </div>
