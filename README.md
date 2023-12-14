@@ -9,9 +9,9 @@
 ## `Due Dates`
 
 Due dates are now possible to add in the activity creator and editor. Both content creators and mentors can do this. The date is stored as text, but the text is checked to ensure that the date is in proper format. This is to ensure compatibility with other features when they are added.
-![plot](./ReadMe%20Images/Date_image_1.jpg)
-![plot](./ReadMe%20Images/Date_image_2.jpg)
-![plot](./ReadMe%20Images/Date_image_3.jpg)
+![plot](./ReadMe%20Images/Date_image_1.JPG)
+![plot](./ReadMe%20Images/Date_image_2.JPG)
+![plot](./ReadMe%20Images/Date_image_3.JPG)
 
 ## `Discussion Board`
 
