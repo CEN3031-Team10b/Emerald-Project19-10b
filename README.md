@@ -23,6 +23,7 @@ The syllabus page allows teachers to specify the rules for a class. Students hav
 ## `Student Dashboard`
 
 The student dashboard is a new view that improves on the existing view and incorporates new features from other parts of the project for easy access for the student. Previously, students were only able to see assignments and had a lot of wasted space. The new view allows students to see assignments, notifications/announcements, due dates, discussions, and the syllabus all from one screen. Currently, this new view is a separate page which the user will have to navigate by going to “/studentdashboard”. By default, it will go to the original view on login for legacy purposes.
+![plot](./ReadMe%20Images/StudentDashboard.png)
 
 ## `Release and Closing Dates (Content Creator)`
 
