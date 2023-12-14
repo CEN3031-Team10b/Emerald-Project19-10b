@@ -9,6 +9,9 @@
 ## `Due Dates`
 
 Due dates are now possible to add in the activity creator and editor. Both content creators and mentors can do this. The date is stored as text, but the text is checked to ensure that the date is in proper format. This is to ensure compatibility with other features when they are added.
+![plot](./ReadMe%20Images/Date_image_1.jpg)
+![plot](./ReadMe%20Images/Date_image_2.jpg)
+![plot](./ReadMe%20Images/Date_image_3.jpg)
 
 ## `Discussion Board`
 
@@ -29,7 +32,11 @@ The student dashboard is a new view that improves on the existing view and incor
 
 - When creating a lesson in the content creator, release closing dates can be selected. The dates cannot be before the current date, and the closing date cannot be before the opening date.
 - The second screenshot shows a section for the dates to be shown but was unable to work on the backend to get it to show.
+  ![plot](./ReadMe%20Images/OpenCloseDates.png)
+  ![plot](./ReadMe%20Images/DatesContentCreator.png)
 
 ## `Notification Center`
 
 Teachers can send notifications from their classroom view to students. Students can view the notifications from their dashboard and mark them as read, unread, and flagged. Students can also filter notifications by these tags.
+![plot](./ReadMe%20Images/Send_Notification.png)
+![plot](./ReadMe%20Images/Notification_Center.png)
